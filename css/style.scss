@@ -1,0 +1,97 @@
+/* Background-Color Variables */
+
+$mainBackground: hsl(233, 47%, 7%);
+$cardBackground: hsl(244, 38%, 16%);
+$accent: hsl(277, 64%, 61%);
+
+/* Text-Color Variables */
+
+$heading: hsl(0, 0%, 100%);
+$mainParagraph: hsla(0, 0%, 100%, 0.75);
+$statHeading: hsla(0, 0%, 100%, 0.6);
+
+/* Font Variables */
+
+$pgFontSize: 15px;
+$fontFamily: 'Inter', sans-serif;
+
+/* Flex-Box Function */
+
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction; 
+}
+
+/* Global */
+
+p {
+    color: $mainParagraph;
+    font-size: $pgFontSize;
+}
+
+h2, h4 {
+    color: $heading;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    @include flex(center, center, row);
+    background-color: $mainBackground;
+    height: 100vh;
+}
+
+
+/* First Mobile */
+
+main {
+    @include flex(flex-start, stretch, column);
+    width: 300px;
+    height: 90vh;
+    border-radius: 10px;
+    .image-container {
+        width: 100%;
+        height: 35%;
+        background-color: $accent;
+        opacity: 1;
+        border-radius: 10px 10px 0 0;
+        img {
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: multiply;
+            
+        }
+    }
+    .card-container {
+        @include flex(space-around, center, column);
+        width: 100%;
+        flex:1;
+        background-color: $cardBackground;
+        text-align: center;
+        padding: 0 20px;
+        border-radius: 0 0 10px 10px;
+        padding-top: 20px;
+        h2 {
+            span {
+                color: $accent;
+            }
+        }
+        .card-info {
+            @include flex(space-between, stretch, column);
+            height: 180px;
+            width:100%;
+            .info {
+                h4 {
+                    font-size: 25px;
+                    margin-bottom: 3px;
+                }
+            }
+        }
+    }
+}
